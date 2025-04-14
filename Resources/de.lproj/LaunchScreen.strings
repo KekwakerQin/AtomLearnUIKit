@@ -1,1 +1,12 @@
-
+welcomeMessage = "Halo";
+getStarted = "erste Schritte";
+logInLoc = "ANMELDEN";
+emailLoc = "E-MAIL";
+passwordLoc = "PASSWORT";
+enterLoc = "EINGEBEN";
+forgotPasswordQuestionLoc = "PASSWORT VERGESSEN? HIER WIEDERHERSTELLEN";
+newHereQuestionLoc = "KONTO ERSTELLEN";
+forgotPasswordLoc = "Passwort vergessen";
+singUpLoc = "Registrieren";
+backToLoginLoc = "Zurück zum Login";
+rootControllerNotFoundLoc = "";

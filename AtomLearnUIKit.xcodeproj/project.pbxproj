@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7D1B678F2DA4EC5600C9764D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B678E2DA4EC5600C9764D /* FirebaseAuth */; };
+		7D1B67912DA4EC5600C9764D /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B67902DA4EC5600C9764D /* FirebaseCore */; };
+		7D1B67932DA4EC5600C9764D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B67922DA4EC5600C9764D /* FirebaseFirestore */; };
+		7D1B67952DA4EC5600C9764D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B67942DA4EC5600C9764D /* FirebaseStorage */; };
+		7DB0F0CD2DA518B500F91601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0F0C32DA518B500F91601 /* Assets.xcassets */; };
+		7DB0F0CF2DA518B500F91601 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0F0C62DA518B500F91601 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		7D1B67702DA4C5D000C9764D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,10 +36,16 @@
 		7D1B67562DA4C5CF00C9764D /* AtomLearnUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomLearnUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1B676F2DA4C5D000C9764D /* AtomLearnUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomLearnUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1B67792DA4C5D000C9764D /* AtomLearnUIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomLearnUIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4F3E512DACAD5B00B35A20 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		7DB0F0C32DA518B500F91601 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7DB0F0CA2DA518B500F91601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7DB0F16A2DA7F19400F91601 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7DB0F16B2DA7F1A600F91601 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7DB0F16F2DA813F300F91601 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7D1B67812DA4C5D000C9764D /* Exceptions for "AtomLearnUIKit" folder in "AtomLearnUIKit" target */ = {
+		7D4F3E552DACB19E00B35A20 /* Exceptions for "AtomLearn" folder in "AtomLearnUIKit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -40,12 +55,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7D1B67582DA4C5CF00C9764D /* AtomLearnUIKit */ = {
+		7D1B67582DA4C5CF00C9764D /* AtomLearn */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7D1B67812DA4C5D000C9764D /* Exceptions for "AtomLearnUIKit" folder in "AtomLearnUIKit" target */,
+				7D4F3E552DACB19E00B35A20 /* Exceptions for "AtomLearn" folder in "AtomLearnUIKit" target */,
 			);
-			path = AtomLearnUIKit;
+			path = AtomLearn;
 			sourceTree = "<group>";
 		};
 		7D1B67722DA4C5D000C9764D /* AtomLearnUIKitTests */ = {
@@ -58,6 +73,21 @@
 			path = AtomLearnUIKitUITests;
 			sourceTree = "<group>";
 		};
+		7DB0F0E22DA7B09D00F91601 /* Features */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7DB0F0E42DA7B0AF00F91601 /* Common */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7DB0F0EA2DA7B40900F91601 /* Persistence  */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Persistence ";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +95,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D1B67912DA4EC5600C9764D /* FirebaseCore in Frameworks */,
+				7D1B67952DA4EC5600C9764D /* FirebaseStorage in Frameworks */,
+				7D1B678F2DA4EC5600C9764D /* FirebaseAuth in Frameworks */,
+				7D1B67932DA4EC5600C9764D /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,9 +122,12 @@
 		7D1B674D2DA4C5CF00C9764D = {
 			isa = PBXGroup;
 			children = (
-				7D1B67582DA4C5CF00C9764D /* AtomLearnUIKit */,
-				7D1B67722DA4C5D000C9764D /* AtomLearnUIKitTests */,
-				7D1B677C2DA4C5D000C9764D /* AtomLearnUIKitUITests */,
+				7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */,
+				7DB0F0E42DA7B0AF00F91601 /* Common */,
+				7DB0F0E32DA7B0A700F91601 /* Resources */,
+				7DB0F0E22DA7B09D00F91601 /* Features */,
+				7DB0F0E12DA7B09700F91601 /* Core */,
+				7D1B67582DA4C5CF00C9764D /* AtomLearn */,
 				7D1B67572DA4C5CF00C9764D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +140,49 @@
 				7D1B67792DA4C5D000C9764D /* AtomLearnUIKitUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7D4F3E502DACAD5600B35A20 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7D4F3E512DACAD5B00B35A20 /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7DB0F0E12DA7B09700F91601 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7D4F3E502DACAD5600B35A20 /* Service */,
+				7DB0F0EA2DA7B40900F91601 /* Persistence  */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		7DB0F0E32DA7B0A700F91601 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DB0F0C32DA518B500F91601 /* Assets.xcassets */,
+				7DB0F0C62DA518B500F91601 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */ = {
+			isa = PBXGroup;
+			children = (
+				7DB0F0E82DA7B31E00F91601 /* AnyTestOfModule */,
+			);
+			path = AtomLearnXCTests;
+			sourceTree = "<group>";
+		};
+		7DB0F0E82DA7B31E00F91601 /* AnyTestOfModule */ = {
+			isa = PBXGroup;
+			children = (
+				7D1B67722DA4C5D000C9764D /* AtomLearnUIKitTests */,
+				7D1B677C2DA4C5D000C9764D /* AtomLearnUIKitUITests */,
+			);
+			path = AnyTestOfModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,10 +201,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7D1B67582DA4C5CF00C9764D /* AtomLearnUIKit */,
+				7D1B67582DA4C5CF00C9764D /* AtomLearn */,
+				7DB0F0E22DA7B09D00F91601 /* Features */,
+				7DB0F0E42DA7B0AF00F91601 /* Common */,
 			);
 			name = AtomLearnUIKit;
 			packageProductDependencies = (
+				7D1B678E2DA4EC5600C9764D /* FirebaseAuth */,
+				7D1B67902DA4EC5600C9764D /* FirebaseCore */,
+				7D1B67922DA4EC5600C9764D /* FirebaseFirestore */,
+				7D1B67942DA4EC5600C9764D /* FirebaseStorage */,
 			);
 			productName = AtomLearnUIKit;
 			productReference = 7D1B67562DA4C5CF00C9764D /* AtomLearnUIKit.app */;
@@ -203,11 +289,17 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
+				de,
+				en,
 			);
 			mainGroup = 7D1B674D2DA4C5CF00C9764D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7D1B67962DA5064C00C9764D /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7D1B67572DA4C5CF00C9764D /* Products */;
 			projectDirPath = "";
@@ -225,6 +317,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DB0F0CD2DA518B500F91601 /* Assets.xcassets in Resources */,
+				7DB0F0CF2DA518B500F91601 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +375,20 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		7DB0F0C62DA518B500F91601 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DB0F0CA2DA518B500F91601 /* Base */,
+				7DB0F16A2DA7F19400F91601 /* ru */,
+				7DB0F16B2DA7F1A600F91601 /* de */,
+				7DB0F16F2DA813F300F91601 /* en */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		7D1B67832DA4C5D000C9764D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -291,10 +399,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FM5UA69R37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AtomLearnUIKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AtomLearn/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -319,10 +426,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FM5UA69R37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AtomLearnUIKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AtomLearn/Info.plist";
+				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/AtomLearn/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -343,6 +450,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -406,6 +514,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -569,6 +678,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
+		7D1B67962DA5064C00C9764D /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D1B678E2DA4EC5600C9764D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		7D1B67902DA4EC5600C9764D /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		7D1B67922DA4EC5600C9764D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		7D1B67942DA4EC5600C9764D /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D1B674E2DA4C5CF00C9764D /* Project object */;
 }
