@@ -10,18 +10,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
+        print("We are on SceneDelegate")
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        
-        if Auth.auth().currentUser != nil {
-            let mainVC = MainViewController()
-            window.rootViewController = UINavigationController(rootViewController: mainVC)
-        }
-        else {
-            let loginVC = LoginViewController()
-            window.rootViewController = UINavigationController(rootViewController: loginVC)
-        }
+        AppLauncher.shared.launch(in: window)
         
         self.window = window
         window.makeKeyAndVisible()

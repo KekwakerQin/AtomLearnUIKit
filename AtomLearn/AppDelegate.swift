@@ -3,14 +3,17 @@ import CoreData
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        print("We are at the appDelegate")
+
         FirebaseApp.configure()
+        print("Was configure")
         return true
     }
 
