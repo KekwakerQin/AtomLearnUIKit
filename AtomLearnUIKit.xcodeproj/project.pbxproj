@@ -16,6 +16,8 @@
 		7DA1C2FA2DAE2B500064C741 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7DA1C2F92DAE2B500064C741 /* GoogleSignInSwift */; };
 		7DB0F0CD2DA518B500F91601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0F0C32DA518B500F91601 /* Assets.xcassets */; };
 		7DB0F0CF2DA518B500F91601 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB0F0C62DA518B500F91601 /* LaunchScreen.storyboard */; };
+		7DD549952DB0F840002559B6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD549942DB0F840002559B6 /* RxCocoa */; };
+		7DD549972DB0F840002559B6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD549962DB0F840002559B6 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7D3169912DB1083F00028C10 /* Exceptions for "Models" folder in "AtomLearnUIKit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppUser.swift,
+			);
+			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
+		};
+		7D9ED82A2DB3756500A1618D /* Exceptions for "Auth" folder in "AtomLearnUIKit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Apple/AppleAuthHandler.swift,
+				Firebase/FirebaseAuthService.swift,
+				Firebase/FirebaseUserService.swift,
+				Google/GoogleAuthHandler.swift,
+				Protocols/AuthServiceProtocol.swift,
+				Protocols/UserServiceProtocol.swift,
+			);
+			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
+		};
 		7DD548CA2DAE53EE002559B6 /* Exceptions for "AtomLearn" folder in "AtomLearnUIKit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -76,6 +97,14 @@
 			path = AtomLearnUIKitUITests;
 			sourceTree = "<group>";
 		};
+		7D9ED8282DB3755D00A1618D /* Auth */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7D9ED82A2DB3756500A1618D /* Exceptions for "Auth" folder in "AtomLearnUIKit" target */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		7DB0F0E22DA7B09D00F91601 /* Features */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Features;
@@ -91,6 +120,14 @@
 			path = "Persistence ";
 			sourceTree = "<group>";
 		};
+		7DD549162DAF9E88002559B6 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7D3169912DB1083F00028C10 /* Exceptions for "Models" folder in "AtomLearnUIKit" target */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +138,10 @@
 				7DA1C2F82DAE2B500064C741 /* GoogleSignIn in Frameworks */,
 				7D1B67912DA4EC5600C9764D /* FirebaseCore in Frameworks */,
 				7D1B67952DA4EC5600C9764D /* FirebaseStorage in Frameworks */,
+				7DD549952DB0F840002559B6 /* RxCocoa in Frameworks */,
 				7DA1C2FA2DAE2B500064C741 /* GoogleSignInSwift in Frameworks */,
 				7D1B678F2DA4EC5600C9764D /* FirebaseAuth in Frameworks */,
+				7DD549972DB0F840002559B6 /* RxSwift in Frameworks */,
 				7D1B67932DA4EC5600C9764D /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +205,8 @@
 		7DB0F0E12DA7B09700F91601 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7D9ED8282DB3755D00A1618D /* Auth */,
+				7DD549162DAF9E88002559B6 /* Models */,
 				7D4F3E502DACAD5600B35A20 /* Service */,
 				7DB0F0EA2DA7B40900F91601 /* Persistence  */,
 			);
@@ -226,6 +267,8 @@
 				7D1B67942DA4EC5600C9764D /* FirebaseStorage */,
 				7DA1C2F72DAE2B500064C741 /* GoogleSignIn */,
 				7DA1C2F92DAE2B500064C741 /* GoogleSignInSwift */,
+				7DD549942DB0F840002559B6 /* RxCocoa */,
+				7DD549962DB0F840002559B6 /* RxSwift */,
 			);
 			productName = AtomLearnUIKit;
 			productReference = 7D1B67562DA4C5CF00C9764D /* AtomLearnUIKit.app */;
@@ -315,6 +358,7 @@
 				7D1B678D2DA4EC5600C9764D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7D1B67962DA5064C00C9764D /* XCRemoteSwiftPackageReference "supabase-swift" */,
 				7DA1C2F62DAE2B500064C741 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				7DD549932DB0F840002559B6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7D1B67572DA4C5CF00C9764D /* Products */;
@@ -721,6 +765,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		7DD549932DB0F840002559B6 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -753,6 +805,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7DA1C2F62DAE2B500064C741 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		7DD549942DB0F840002559B6 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD549932DB0F840002559B6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		7DD549962DB0F840002559B6 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD549932DB0F840002559B6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

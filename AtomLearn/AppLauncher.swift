@@ -5,29 +5,28 @@ final class AppLauncher {
     static let shared = AppLauncher()
 
     private init() {}
-    
-    var authService: AuthServiceProtocol = FirebaseAuthService.shared
-    
-    func launch(in window: UIWindow){
+
+    var authService: AuthServiceProtocol = FirebaseAuthService() // ← без "any"
+
+    func launch(in window: UIWindow) {
         let state = determineAppState()
-        
+
         switch state {
-        case.unauthorized:
+        case .unauthorized:
             window.rootViewController = AuthRouter.createModule()
-            
-        case.authorized(let userID):
+        case .authorized(let userID):
             window.rootViewController = MainRouter.createTabBar(for: userID)
         }
-        
+
         window.makeKeyAndVisible()
     }
-    
+
     func determineAppState() -> AppState {
-        if authService.isAuthorized {
-            return .authorized(userID: authService.currentUserID!)
-        }
-        else {
+        guard authService.isAuthorized,
+              let userID = authService.currentUserID else {
             return .unauthorized
         }
+
+        return .authorized(userID: userID)
     }
 }
