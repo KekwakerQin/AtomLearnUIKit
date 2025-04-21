@@ -59,6 +59,14 @@
 			);
 			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
 		};
+		7D6E85D62DB5EEDD007A2BFE /* Exceptions for "Firestore" folder in "AtomLearnUIKit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FirestorePaths.swift,
+				FirestoreScheme.swift,
+			);
+			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
+		};
 		7D9ED82A2DB3756500A1618D /* Exceptions for "Auth" folder in "AtomLearnUIKit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -101,6 +109,9 @@
 		};
 		7D6E85D12DB5E679007A2BFE /* Firestore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7D6E85D62DB5EEDD007A2BFE /* Exceptions for "Firestore" folder in "AtomLearnUIKit" target */,
+			);
 			path = Firestore;
 			sourceTree = "<group>";
 		};
