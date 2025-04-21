@@ -57,7 +57,6 @@ extension AppleAuthHandler: ASAuthorizationControllerDelegate {
             rawNonce: nonce
         )
         
-        // Firebase вход
         Auth.auth().signIn(with: credential) { result, error in
             if let error = error {
                 self.singleCallback?(.failure(error))

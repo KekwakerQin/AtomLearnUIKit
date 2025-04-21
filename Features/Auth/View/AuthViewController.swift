@@ -7,27 +7,23 @@ final class AuthViewController: UIViewController {
     private let userService: UserServiceProtocol = FirestoreUserService()
     private let disposeBag = DisposeBag()
     
-    private let googleAuthButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Sign in with Google", for: .normal)
-        
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 8
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private lazy var appleAuthButton: UIButton = setupAuthButtons(title: "Sign in with Apple")
+
+    private lazy var googleAuthButton: UIButton = setupAuthButtons(title: "Sign in with Google")
     
-    private let appleAuthButton: UIButton = {
+    func setupAuthButtons(title: String) -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle("Sign in with Apple", for: .normal)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor(named: "BackgroundColor"), for: .normal)
+        button.setTitleColor(UIColor(named: "TextColor"), for: .highlighted)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor(named: "TextColor")
+        button.backgroundColor = UIColor(named: "TextColor")
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +33,7 @@ final class AuthViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         title = "Authorization"
         view.addSubview(googleAuthButton)
         view.addSubview(appleAuthButton)
@@ -51,7 +47,7 @@ final class AuthViewController: UIViewController {
     private func setupLayout() {
         NSLayoutConstraint.activate([
             googleAuthButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            googleAuthButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            googleAuthButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: UIScreen.main.bounds.height * 0.2),
             googleAuthButton.heightAnchor.constraint(equalToConstant: 44),
             
             // Адаптивная ширина
@@ -62,7 +58,7 @@ final class AuthViewController: UIViewController {
             googleAuthButton.widthAnchor.constraint(lessThanOrEqualToConstant: 320),
             
             appleAuthButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appleAuthButton.topAnchor.constraint(equalTo: googleAuthButton.bottomAnchor, constant: UIScreen.main.bounds.height * 0.05),
+            appleAuthButton.topAnchor.constraint(equalTo: googleAuthButton.bottomAnchor, constant: UIScreen.main.bounds.height * 0.025),
             appleAuthButton.heightAnchor.constraint(equalToConstant: 44),
             
             appleAuthButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
