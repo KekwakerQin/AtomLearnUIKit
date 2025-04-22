@@ -21,11 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
 
     }
-    
-    func reloadRootViewController() {
-        guard let window = window else { return }
-        AppLauncher.shared.launch(in: window)
-    }
 }
 
 

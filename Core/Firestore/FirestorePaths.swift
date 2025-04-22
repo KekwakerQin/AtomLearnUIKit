@@ -1,4 +1,5 @@
 import FirebaseFirestore
+import FirebaseAuth
 
 enum FirestorePaths {
     
@@ -14,7 +15,7 @@ enum FirestorePaths {
         usersCollection().document(uid)
     }
     
-    
+
     // MARK: - Boards
     
     static func boardsCollection() -> CollectionReference {
@@ -24,7 +25,7 @@ enum FirestorePaths {
     static func boardRef(boardID: String) -> DocumentReference {
         boardsCollection().document(boardID)
     }
-    
+        
     
     // MARK: - Cards
     

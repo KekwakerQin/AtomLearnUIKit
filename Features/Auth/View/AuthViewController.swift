@@ -48,6 +48,7 @@ final class AuthViewController: UIViewController {
         setupHierarchy()
         setupConstraints()
         setupActions()
+        print("userID: \()")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,8 +68,7 @@ final class AuthViewController: UIViewController {
     // MARK: - Setup
     
     private func setupView() {
-        view.backgroundColor = UIColor(named: "BackgroundColor")
-        title = "Authorization"
+        view = UIView.setupView(view: view)
     }
     
     private func setupHierarchy() {
