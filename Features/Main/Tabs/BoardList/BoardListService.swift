@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import Foundation
 
 protocol BoardServiceProtocol {
     func fetchBoards(for uid: String) -> Single<[Board]>
