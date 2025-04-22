@@ -6,9 +6,9 @@ final class ProfileViewController: UIViewController {
     private let exitButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Logout", for: .normal)
+        button.setTitleColor(UIColor(named: "BackgroundColor"), for: .normal)
         
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor(named: "TextColor")
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -22,8 +22,7 @@ final class ProfileViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemGray
-        title = "Authorization"
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         view.addSubview(exitButton)
     }
     

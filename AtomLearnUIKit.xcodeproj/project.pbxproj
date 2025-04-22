@@ -67,12 +67,20 @@
 			);
 			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
 		};
+		7D6E85E92DB63581007A2BFE /* Exceptions for "Helpers" folder in "AtomLearnUIKit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				IconFactory.swift,
+			);
+			target = 7D1B67552DA4C5CF00C9764D /* AtomLearnUIKit */;
+		};
 		7D9ED82A2DB3756500A1618D /* Exceptions for "Auth" folder in "AtomLearnUIKit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Apple/AppleAuthHandler.swift,
 				Firebase/FirebaseAuthService.swift,
 				Firebase/FirebaseUserService.swift,
+				Google/GoogleAuthError.swift,
 				Google/GoogleAuthHandler.swift,
 				Protocols/AuthServiceProtocol.swift,
 				Protocols/UserServiceProtocol.swift,
@@ -113,6 +121,19 @@
 				7D6E85D62DB5EEDD007A2BFE /* Exceptions for "Firestore" folder in "AtomLearnUIKit" target */,
 			);
 			path = Firestore;
+			sourceTree = "<group>";
+		};
+		7D6E85E42DB6328F007A2BFE /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7D6E85E62DB6331F007A2BFE /* Helpers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7D6E85E92DB63581007A2BFE /* Exceptions for "Helpers" folder in "AtomLearnUIKit" target */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7D9ED8282DB3755D00A1618D /* Auth */ = {
@@ -186,6 +207,7 @@
 			children = (
 				7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */,
 				7DB0F0E42DA7B0AF00F91601 /* Common */,
+				7D6E85E32DB63286007A2BFE /* Sources */,
 				7DB0F0E32DA7B0A700F91601 /* Resources */,
 				7DB0F0E22DA7B09D00F91601 /* Features */,
 				7DB0F0E12DA7B09700F91601 /* Core */,
@@ -211,6 +233,15 @@
 				7D4F3E512DACAD5B00B35A20 /* AuthService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		7D6E85E32DB63286007A2BFE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7D6E85E62DB6331F007A2BFE /* Helpers */,
+				7D6E85E42DB6328F007A2BFE /* Extensions */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		7DA1C2F52DAE2B0E0064C741 /* Frameworks */ = {

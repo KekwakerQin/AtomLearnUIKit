@@ -16,15 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
         AppLauncher.shared.launch(in: window)
-        
         self.window = window
+        
         window.makeKeyAndVisible()
 
     }
+    
+    func reloadRootViewController() {
+        guard let window = window else { return }
+        AppLauncher.shared.launch(in: window)
+    }
 }
 
-//        let rootViewController = WindowTestViewController()
-//        rootViewController.view.backgroundColor = .white
-//        window.rootViewController = rootViewController
-//        self.window = window
-//        window.makeKeyAndVisible()
+

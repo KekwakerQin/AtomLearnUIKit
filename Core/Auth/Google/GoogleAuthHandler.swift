@@ -10,9 +10,7 @@ final class GoogleAuthHandler {
     func signIn(from viewController: UIViewController) -> Single<User> {
         return Single.create { single in
             guard let clientID = FirebaseApp.app()?.options.clientID else {
-                single(.failure(
-                    NSError(domain: "GoogleAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "Missing clientID"]))
-                )
+                single(.failure(GoogleAuthError.missingClientID))
                 return Disposables.create()
             }
 
@@ -28,9 +26,7 @@ final class GoogleAuthHandler {
                 .windows
                 .first(where: { $0.isKeyWindow })?
                 .rootViewController else {
-                single(.failure(
-                    NSError(domain: "GoogleAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No root VC found"]))
-                )
+                single(.failure(GoogleAuthError.missingRootViewController))
                 return Disposables.create()
             }
 
@@ -45,9 +41,7 @@ final class GoogleAuthHandler {
                     let user = result?.user,
                     let idToken = user.idToken?.tokenString
                 else {
-                    single(.failure(NSError(domain: "GoogleAuth", code: -1, userInfo: [
-                        NSLocalizedDescriptionKey: "Missing ID token"
-                    ])))
+                    single(.failure(GoogleAuthError.missingIDToken))
                     return
                 }
 
@@ -59,18 +53,28 @@ final class GoogleAuthHandler {
 
                 Auth.auth().signIn(with: credential) { authResult, error in
                     if let error = error {
-                        single(.failure(error))
+                        single(.failure(GoogleAuthError.firebaseSignInFailed(error)))
                     } else if let user = authResult?.user {
                         single(.success(user))
                     } else {
-                        single(.failure(NSError(domain: "GoogleAuth", code: -1, userInfo: [
-                            NSLocalizedDescriptionKey: "Unknown error"
-                        ])))
+                        single(.failure(GoogleAuthError.unknown))
                     }
                 }
             }
 
             return Disposables.create()
         }
+        .timeout(.seconds(10), scheduler: MainScheduler.instance)
+        .catch { error in
+            if case RxError.timeout = error {
+                return .error(GoogleAuthError.timeout)
+            } else {
+                return .error(error)
+            }
+        }
+        .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .observe(on: MainScheduler.instance)
     }
+    
+    
 }
