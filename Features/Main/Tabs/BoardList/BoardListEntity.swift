@@ -8,5 +8,5 @@ struct Board: Codable, Identifiable {
     let profilePictures: [String]
     let title: String
     let description: String
-    let createdAt: Date
+    let createdAt: Date // date
 }
