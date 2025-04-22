@@ -10,7 +10,7 @@ class FreindListViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        view = UIView.setupView(view: view)
     }
     
     private func setupLayout() {
