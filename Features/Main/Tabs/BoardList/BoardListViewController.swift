@@ -7,12 +7,23 @@ protocol BoardListViewProtocol: AnyObject {
 
 final class BoardListViewController: UIViewController {
     
+    let user = SessionManager.shared.currentUser
+    
     private let tableView = UITableView()
     private let addBoardButton: UIButton = UIButton.standart(title: "Add some Board")
     
-    weak var presenter: BoardListPresenterProtocol?
+    private var presenter: BoardListPresenterProtocol
     
     private var boards: [Board] = []
+    
+    init(presenter: BoardListPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +68,7 @@ final class BoardListViewController: UIViewController {
 
     @objc private func addBoardInDatabase() {
         print("Tapped")
-        presenter?.didTapCreateButton()
+        presenter.didTapCreateButton()
     }
 }
 
@@ -93,6 +104,6 @@ extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didSelectBoard(boards[indexPath.row])
+        presenter.didSelectBoard(boards[indexPath.row])
     }
 }

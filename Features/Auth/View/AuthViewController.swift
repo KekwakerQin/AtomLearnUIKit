@@ -48,7 +48,6 @@ final class AuthViewController: UIViewController {
         setupHierarchy()
         setupConstraints()
         setupActions()
-        print("userID: \()")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,7 +101,7 @@ final class AuthViewController: UIViewController {
     
     private func setupActions() {
         googleAuthButton.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
-        appleAuthButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
+//        appleAuthButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -135,13 +134,12 @@ final class AuthViewController: UIViewController {
         showLoaderAlert()
 
         authService.signInWithGoogle(from: self)
-            .flatMap { self.userService.createUserIfNeeded(from: $0) }
             .observe(on: MainScheduler.instance)
             .subscribe(
-                onSuccess: { appUser in
-                    print("Вход выполнен")
-                    self.loadingAlert?.dismiss(animated: true)
+                onSuccess: { [weak self] appUser in
+                    self?.loadingAlert?.dismiss(animated: true)
 
+                    // Переход к следующему экрану
                     if let window = UIApplication.shared.connectedScenes
                         .compactMap({ $0 as? UIWindowScene })
                         .first?.windows
@@ -150,33 +148,32 @@ final class AuthViewController: UIViewController {
                     }
                 },
                 onFailure: { [weak self] error in
-                    print("Ошибка входа \(error.localizedDescription)")
                     self?.loadingAlert?.dismiss(animated: true) {
                         self?.showError(error, retryAction: {
-                            self?.retryGoogleLogin()
+                            self?.handleGoogleSignIn()
                         })
                     }
                 }
             )
             .disposed(by: disposeBag)
     }
-    
-    @objc private func handleAppleSignIn() {
-        authService.signInWithApple(from: self)
-            .do(onSubscribe: { print("Начали вход по Apple") })
-            .flatMap { user in
-                print("Получен user: \(user.uid)")
-                return self.userService.createUserIfNeeded(from: user)
-            }
-            .observe(on: MainScheduler.instance)
-            .subscribe(onSuccess: { appUser in
-                print("Успешный вход, appUser: \(appUser.uid)")
-                AppLauncher.shared.launch(in: UIApplication.shared.windows.first!)
-            }, onFailure: { error in
-                print("Ошибка входа по Apple: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
-    }
+//    @objc private func handleAppleSignIn() {
+//        authService.signInWithApple(from: self)
+//            .do(onSubscribe: { print("Начали вход по Apple") })
+//            .flatMap { user in
+//                print("Получен user: \(user.uid)")
+//                return self.userService.createUserIfNeeded(from: user)
+//            }
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onSuccess: { appUser in
+//                print("Успешный вход, appUser: \(appUser.uid)")
+//                SessionManager.shared.currentUser = appUser
+//                AppLauncher.shared.launch(in: UIApplication.shared.windows.first!)
+//            }, onFailure: { error in
+//                print("Ошибка входа по Apple: \(error.localizedDescription)")
+//            })
+//            .disposed(by: disposeBag)
+//    }
     
     @objc private func handleImageTap() {
         let feedback = UIImpactFeedbackGenerator(style: .medium)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D0397AD2DB86AFD00849CF1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0397AC2DB86A8A00849CF1 /* SessionManager.swift */; };
 		7D1192162DAD00830013025E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4F3E512DACAD5B00B35A20 /* AuthService.swift */; };
 		7D1B678F2DA4EC5600C9764D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B678E2DA4EC5600C9764D /* FirebaseAuth */; };
 		7D1B67912DA4EC5600C9764D /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D1B67902DA4EC5600C9764D /* FirebaseCore */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D0397AC2DB86A8A00849CF1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		7D1B67562DA4C5CF00C9764D /* AtomLearnUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomLearnUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1B676F2DA4C5D000C9764D /* AtomLearnUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomLearnUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D1B67792DA4C5D000C9764D /* AtomLearnUIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomLearnUIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,9 +206,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D0397AA2DB86A7F00849CF1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7D0397AB2DB86A8500849CF1 /* Manager */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7D0397AB2DB86A8500849CF1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7D0397AC2DB86A8A00849CF1 /* SessionManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		7D1B674D2DA4C5CF00C9764D = {
 			isa = PBXGroup;
 			children = (
+				7D0397AA2DB86A7F00849CF1 /* Shared */,
 				7DB46F392DB763560040DE1C /* UIComponents */,
 				7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */,
 				7DB0F0E42DA7B0AF00F91601 /* Common */,
@@ -466,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D0397AD2DB86AFD00849CF1 /* SessionManager.swift in Sources */,
 				7D1192162DAD00830013025E /* AuthService.swift in Sources */,
 				7DB46F3B2DB773DF0040DE1C /* UIButtonExtensions.swift in Sources */,
 			);

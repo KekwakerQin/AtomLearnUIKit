@@ -4,17 +4,18 @@ import GoogleSignIn
 import RxSwift
 import AuthenticationServices
 import CryptoKit // для nonce
+import RxSwift
 
 final class FirebaseAuthService: AuthServiceProtocol {
     
     private let googleAuthHandler = GoogleAuthHandler()
-    private let appleAuthHandler = AppleAuthHandler()
+//    private let appleAuthHandler = AppleAuthHandler()
 
-    func signInWithApple(from viewController: UIViewController) -> Single<User> {
-        appleAuthHandler.signIn(from: viewController)
-    }
+//    func signInWithApple(from viewController: UIViewController) -> Single<AppUser> {
+//        appleAuthHandler.signIn(from: viewController)
+//    }
     
-    func signInWithGoogle(from viewController: UIViewController) -> Single<User> {
+    func signInWithGoogle(from viewController: UIViewController) -> Single<AppUser> {
         googleAuthHandler.signIn(from: viewController)
     }
     

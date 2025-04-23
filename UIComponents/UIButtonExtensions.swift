@@ -16,7 +16,7 @@ extension UIButton {
 
 extension UIView {
     static func setupView(view: UIView) -> UIView {
-        var view = view
+        let view = view
         view.backgroundColor = UIColor(named: "BackgroundColor")
         return view
     }

@@ -8,8 +8,14 @@ final class FirestoreUserService: UserServiceProtocol {
 
     func createUserIfNeeded(from firebaseUser: User) -> Single<AppUser> {
         let docRef = FirestorePaths.userRef(uid: firebaseUser.uid)
-        return Single.create { single in
+        
+        return Single<AppUser>.create { single in
             docRef.getDocument { snapshot, error in
+                if let error = error {
+                    single(.failure(error))
+                    return
+                }
+
                 if let snapshot = snapshot, snapshot.exists {
                     do {
                         let user = try snapshot.data(as: AppUser.self)
@@ -20,9 +26,11 @@ final class FirestoreUserService: UserServiceProtocol {
                 } else {
                     let appUser = AppUser(
                         id: firebaseUser.uid,
+                        uid: firebaseUser.uid,
+                        username: "",
                         photoURL: "",
                         registeredAt: Date(),
-                        uid: firebaseUser.uid
+                        coins: 0
                     )
 
                     do {
@@ -31,6 +39,7 @@ final class FirestoreUserService: UserServiceProtocol {
                                 single(.failure(error))
                             } else {
                                 single(.success(appUser))
+                                SessionManager.shared.currentUser = appUser
                             }
                         }
                     } catch {
@@ -64,8 +73,13 @@ final class FirestoreUserService: UserServiceProtocol {
     }
     
     func updateUser(_ user: AppUser) -> Completable {
+
         guard let uid = user.id else {
-            return .error(NSError(domain: "FirestoreUserService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Missing user id"]))
+            return .error(NSError(
+                domain: "FirestoreUserService",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "Missing document ID"]
+            ))
         }
         
         let ref = FirestorePaths.userRef(uid: uid)

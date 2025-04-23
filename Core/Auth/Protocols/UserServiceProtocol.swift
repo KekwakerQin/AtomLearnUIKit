@@ -2,5 +2,5 @@ import FirebaseAuth
 import RxSwift
 
 protocol UserServiceProtocol {
-    func createUserIfNeeded(from firebaseUser: User) -> Single<AppUser>
+    func createUserIfNeeded(from firebaseUser: FirebaseAuth.User) -> Single<AppUser>
 }
