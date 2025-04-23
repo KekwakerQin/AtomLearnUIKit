@@ -1,10 +1,12 @@
 import UIKit
 import RxSwift
 import Foundation
+import Firebase
 
 protocol BoardServiceProtocol {
     func fetchBoards(for uid: String) -> Single<[Board]>
     func createBoard(for uid: String) -> Single<Board>
+    func deleteBoards(for uid: String) -> Single<Void>
 }
 
 final class BoardService: BoardServiceProtocol {
@@ -52,6 +54,41 @@ final class BoardService: BoardServiceProtocol {
                 }
             } catch {
                 single(.failure(error))
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func deleteBoards(for uid: String) -> Single<Void> {
+        Single<Void>.create { single in
+            let query = FirestorePaths.boardsCollection()
+                .whereField(FirestoreFields.Board.ownerUID, isEqualTo: uid)
+            
+            query.getDocuments { snapshot, error in
+                if let error = error {
+                    single(.failure(error))
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    single(.success(())) // нет досок — это не ошибка
+                    return
+                }
+                
+                let batch = Firestore.firestore().batch()
+                
+                for doc in documents {
+                    batch.deleteDocument(doc.reference)
+                }
+                
+                batch.commit { error in
+                    if let error = error {
+                        single(.failure(error))
+                    } else {
+                        single(.success(())) // успешно удалены
+                    }
+                }
             }
             
             return Disposables.create()

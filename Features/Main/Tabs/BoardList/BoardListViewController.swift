@@ -11,6 +11,7 @@ final class BoardListViewController: UIViewController {
     
     private let tableView = UITableView()
     private let addBoardButton: UIButton = UIButton.standart(title: "Add some Board")
+    private let deleteBoardButton: UIButton = UIButton.standart(title: "Delete all Boards")
     
     private var presenter: BoardListPresenterProtocol
     
@@ -51,6 +52,7 @@ final class BoardListViewController: UIViewController {
     private func setupHierarchy() {
         view.addSubview(tableView)
         view.addSubview(addBoardButton)
+        view.addSubview(deleteBoardButton)
     }
     
     private func setupLayout() {
@@ -58,18 +60,28 @@ final class BoardListViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             addBoardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addBoardButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addBoardButton.heightAnchor.constraint(equalToConstant: 44),
-
+            addBoardButton.bottomAnchor.constraint(equalTo: deleteBoardButton.topAnchor, constant: -20),
                 // Адаптивная ширина
             addBoardButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
 
                 // Минимум и максимум (если надо)
             addBoardButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
-            addBoardButton.widthAnchor.constraint(lessThanOrEqualToConstant: 320)
+            addBoardButton.widthAnchor.constraint(lessThanOrEqualToConstant: 320),
+            
+            deleteBoardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            deleteBoardButton.heightAnchor.constraint(equalToConstant: 44),
+            deleteBoardButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+
+                // Адаптивная ширина
+            deleteBoardButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+
+                // Минимум и максимум (если надо)
+            deleteBoardButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            deleteBoardButton.widthAnchor.constraint(lessThanOrEqualToConstant: 320),
 
         ])
     }

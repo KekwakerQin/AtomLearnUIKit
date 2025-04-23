@@ -4,6 +4,7 @@ import RxSwift
 protocol BoardListInteractorInputProtocol {
     func fetchBoards()
     func createBoard()
+    func deleteBoards()
 }
 
 protocol BoardListInteractorOutputProtocol: AnyObject {
@@ -45,5 +46,14 @@ final class BoardListInteractor: BoardListInteractorInputProtocol {
             .disposed(by: disposeBag)
     }
     
-    
+    func deleteBoards() {
+        service.deleteBoards(for: userID)
+            .subscribe(onSuccess: { [weak self] in
+                print("All deleted")
+                self?.fetchBoards()
+            }, onFailure: { [weak self] error in
+                self?.presenter?.didFailCreatingBoard(error)
+            })
+            .disposed(by: disposeBag)
+    }
 }
