@@ -28,13 +28,18 @@ final class BoardListPresenter: BoardListPresenterProtocol, BoardListInteractorO
         interactor.createBoard()
     }
     
+    func didTapDeleteButton() {
+        print("Tapped Board List Presenter")
+        interactor.createBoard()
+    }
+    
     func didSelectBoard(_ board: Board) {
         router.openBoardDetail(from: view, board: board)
     }
     
     func didFetchBoard(_ boards: [Board])      { view?.showBoards(boards) }
     func didFailFetchingBoard(_ error: Error)  { view?.showError(error)   }
-    func didCreateBoard(_ board: Board)        { view?.showBoards([board])/*append*/ }
+    func didCreateBoard(_ board: Board)        { interactor.fetchBoards() }
     func didFailCreatingBoard(_ error: Error)  { view?.showError(error)   }
     
 }

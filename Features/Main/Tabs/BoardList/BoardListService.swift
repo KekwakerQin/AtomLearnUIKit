@@ -11,7 +11,7 @@ final class BoardService: BoardServiceProtocol {
     func fetchBoards(for uid: String) -> Single<[Board]> {
         Single.create { single in
             FirestorePaths.boardsCollection()
-                .whereField("ownerUID", isEqualTo: uid)
+                .whereField(FirestoreFields.Board.ownerUID, isEqualTo: uid)
                 .getDocuments { snapshot, error in
                     if let error = error {
                         single(.failure(error))

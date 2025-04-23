@@ -25,7 +25,7 @@ final class BoardListInteractor: BoardListInteractorInputProtocol {
     }
     
     func fetchBoards() {
-        service.fetchBoards(for: userID)
+        service.fetchBoards(for: (SessionManager.shared.currentUser?.id)!)
             .subscribe(onSuccess: { [weak self] boards in
                 self?.presenter?.didFetchBoard(boards)
             }, onFailure: { [weak self] error in

@@ -27,16 +27,25 @@ final class BoardListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BoardCell")
+        
         setupView()
         setupHierarchy()
         setupLayout()
         setupAction()
+        
     }
     
     // MARK: - Setup
 
     private func setupView() {
         view = UIView.setupView(view: view)
+        addBoardButton.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupHierarchy() {
@@ -46,8 +55,13 @@ final class BoardListViewController: UIViewController {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            
             addBoardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addBoardButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addBoardButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             addBoardButton.heightAnchor.constraint(equalToConstant: 44),
 
                 // Адаптивная ширина
@@ -62,6 +76,7 @@ final class BoardListViewController: UIViewController {
     
     private func setupAction() {
         addBoardButton.addTarget(self, action: #selector(addBoardInDatabase), for: .touchUpInside)
+        addBoardButton.addTarget(self, action: #selector(didDeleteBoardInDatabase), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -70,10 +85,16 @@ final class BoardListViewController: UIViewController {
         print("Tapped")
         presenter.didTapCreateButton()
     }
+    
+    @objc private func didDeleteBoardInDatabase() {
+        print("Tapped")
+        presenter.didTapDeleteButton()
+    }
 }
 
 extension BoardListViewController: BoardListViewProtocol {
     func showBoards(_ boards: [Board]) {
+        print("Получено досок: \(boards.count)")
         self.boards = boards
         tableView.reloadData()
     }
@@ -90,7 +111,8 @@ extension BoardListViewController: BoardListViewProtocol {
 extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tv: UITableView, numberOfRowsInSection section: Int) -> Int {
-        boards.count
+        print("Количество строк в секции: \(boards.count)")
+        return boards.count
     }
 
     func tableView(_ tv: UITableView,
