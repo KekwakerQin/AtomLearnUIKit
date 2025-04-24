@@ -1,5 +1,5 @@
 import UIKit
-
+// add comment
 protocol BoardListRouterProtocol: AnyObject {
     func openBoardDetail(from view: BoardListViewProtocol?, board: Board)
 }
