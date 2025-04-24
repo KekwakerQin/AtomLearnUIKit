@@ -41,7 +41,7 @@ final class BoardListViewController: UIViewController {
         
     }
     
-    // MARK: - Setup
+    // MARK: - Setup 
 
     private func setupView() {
         view = UIView.setupView(view: view)
