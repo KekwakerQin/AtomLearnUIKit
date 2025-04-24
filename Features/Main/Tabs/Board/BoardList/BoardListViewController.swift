@@ -104,6 +104,8 @@ final class BoardListViewController: UIViewController {
     }
 }
 
+// MARK: - BoardListViewController: Protocol
+
 extension BoardListViewController: BoardListViewProtocol {
     func showBoards(_ boards: [Board]) {
         print("Получено досок: \(boards.count)")
@@ -119,6 +121,8 @@ extension BoardListViewController: BoardListViewProtocol {
         present(alert, animated: true)
     }
 }
+
+// MARK: - BoardListViewController: UITableView, DataSource
 
 extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -138,6 +142,7 @@ extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Выбран борд: \(boards[indexPath.row].title)")
         presenter.didSelectBoard(boards[indexPath.row])
     }
 }

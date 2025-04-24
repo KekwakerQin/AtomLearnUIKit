@@ -29,19 +29,14 @@ enum FirestorePaths {
     
     // MARK: - Cards
     
-    static func cardsCollection() -> CollectionReference {
-        db.collection("cards")
+    static func cardsCollection(forBoard boardID: String) -> CollectionReference {
+        boardRef(boardID: boardID).collection(FirestoreFields.Board.cardsCollection)
     }
-    
-    static func cardRef(cardID: String) -> DocumentReference {
-        cardsCollection().document(cardID)
-    }
-    
     
     // MARK: - Learn Progress (per user per card)
     
     static func progressCollection(uid: String) -> CollectionReference {
-        userRef(uid: uid).collection("learn_progress")
+        userRef(uid: uid).collection("cards")
     }
     
     static func progressRef(uid: String, cardID: String) -> DocumentReference {

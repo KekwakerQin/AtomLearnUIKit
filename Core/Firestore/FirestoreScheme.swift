@@ -22,6 +22,7 @@ enum FirestoreFields {
         static let profilePictures = "profilePictures"
         static let title = "title"
         static let description = "description"
+        static let cardsCollection = "cards"
         static let createdAt = "createdAt"
     }
     

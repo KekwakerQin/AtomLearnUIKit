@@ -35,6 +35,7 @@ final class BoardListPresenter: BoardListPresenterProtocol, BoardListInteractorO
     }
     
     func didSelectBoard(_ board: Board) {
+        print("Router запускается")
         router.openBoardDetail(from: view, board: board)
     }
     

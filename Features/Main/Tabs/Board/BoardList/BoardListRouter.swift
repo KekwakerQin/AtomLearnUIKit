@@ -8,13 +8,11 @@ final class BoardListRouter: BoardListRouterProtocol {
     func openBoardDetail(from view: (any BoardListViewProtocol)?, board: Board) {
         guard
         let vc = view as? UIViewController
-        else { return }
+        else {
+            print("не кастуется к UIViewController")
+            return }
         
-        // временный заглушка‑экран
-        let detailVC = UIViewController()
-        detailVC.view.backgroundColor = .systemBackground
-        detailVC.title = board.title
-        
+        let detailVC = BoardDetailRouter.createModule(board: board)
         vc.navigationController?.pushViewController(detailVC, animated: true)
     }
     
