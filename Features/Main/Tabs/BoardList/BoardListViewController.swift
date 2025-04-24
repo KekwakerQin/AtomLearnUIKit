@@ -88,7 +88,7 @@ final class BoardListViewController: UIViewController {
     
     private func setupAction() {
         addBoardButton.addTarget(self, action: #selector(addBoardInDatabase), for: .touchUpInside)
-        addBoardButton.addTarget(self, action: #selector(didDeleteBoardInDatabase), for: .touchUpInside)
+        deleteBoardButton.addTarget(self, action: #selector(didDeleteBoardInDatabase), for: .touchUpInside)
     }
     
     // MARK: - Actions
