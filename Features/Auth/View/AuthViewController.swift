@@ -131,7 +131,7 @@ final class AuthViewController: UIViewController {
     }
     
     @objc private func handleGoogleSignIn() {
-        showLoaderAlert()
+//        showLoaderAlert()
 
         authService.signInWithGoogle(from: self)
             .observe(on: MainScheduler.instance)

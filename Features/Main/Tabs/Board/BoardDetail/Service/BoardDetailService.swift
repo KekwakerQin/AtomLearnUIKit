@@ -1,41 +1,76 @@
 import UIKit
 import RxSwift
 import Firebase
+import FirebaseFirestore
+import RealmSwift
 
 protocol BoardDetailServiceProtocol {
-    func fetchCards(for boardID: String) -> Single<[Card]>
     func createCard(for boardID: String) -> Single<Void>
     func deleteCards(for boardID: String) -> Completable
+    func fetchCards(for boardID: String, limit: Int?) -> Single<[Card]>
+    func listenerCards(for boardID: String, listener: @escaping (Result<[Card], Error>) -> Void) -> ListenerRegistration
 }
 
 final class BoardDetailService: BoardDetailServiceProtocol {
     
-    func fetchCards(for boardID: String) -> Single<[Card]> {
+    func listenerCards(for boardID: String, listener: @escaping (Result<[Card], Error>) -> Void) -> ListenerRegistration {
+        return FirestorePaths.cardsCollection(forBoard: boardID)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    listener(.failure(error))
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    listener(.success([]))
+                    return
+                }
+                
+                do {
+                    let cards = try documents.map { try $0.data(as: Card.self) }
+                    listener(.success(cards))
+                } catch {
+                    listener(.failure(error))
+                }
+            }
+    }
+    
+    func fetchCards(for boardID: String, limit: Int?) -> Single<[Card]> {
         Single.create { single in
-            FirestorePaths.cardsCollection(forBoard: boardID)
-                .getDocuments { snapshot, error in
-                    if let error = error {
+            var query: FirebaseFirestore.Query = FirestorePaths.cardsCollection(forBoard: boardID)
+
+            if let limit = limit {
+                query = query.limit(to: limit)
+            }
+
+            query.getDocuments { snapshot, error in
+                if let error = error {
+                    single(.failure(error))
+                } else {
+                    do {
+                        let cards = try snapshot?.documents.map { try $0.data(as: Card.self) } ?? []
+                        single(.success(cards))
+                    } catch {
                         single(.failure(error))
-                    } else if let documents = snapshot?.documents {
-                        do {
-                            let cards = try documents.map { try $0.data(as: Card.self) }
-                            single(.success(cards))
-                        } catch {
-                            single(.failure(error))
-                        }
-                    } else {
-                        single(.success([]))
                     }
                 }
+            }
+
             return Disposables.create()
         }
+    }
+    
+    // Заглушка
+    func generateRandomCardTitleWithNumber() -> String {
+        let number = Int.random(in: 1...100)
+        return "Card #\(number)"
     }
     
     func createCard(for boardID: String) -> Single<Void> {
         let cardID = UUID().uuidString
         let card = Card(
             id: cardID,
-            term: "Atom",
+            term: generateRandomCardTitleWithNumber(),
             definition: "Learn",
             boardID: boardID,
             createdBy: SessionManager.shared.currentUser?.uid ?? "unknown"
@@ -91,4 +126,5 @@ final class BoardDetailService: BoardDetailServiceProtocol {
             return Disposables.create()
         }
     }
+   
 }

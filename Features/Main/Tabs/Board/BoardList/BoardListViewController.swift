@@ -41,6 +41,11 @@ final class BoardListViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.viewWillDisappear()
+    }
+    
     // MARK: - Setup 
 
     private func setupView() {
@@ -126,14 +131,14 @@ extension BoardListViewController: BoardListViewProtocol {
 
 extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
 
-    func tableView(_ tv: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Количество строк в секции: \(boards.count)")
         return boards.count
     }
 
-    func tableView(_ tv: UITableView,
+    func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tv.dequeueReusableCell(withIdentifier: "BoardCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BoardCell")
                  ?? UITableViewCell(style: .subtitle, reuseIdentifier: "BoardCell")
         let board = boards[indexPath.row]
         cell.textLabel?.text = board.title
@@ -141,8 +146,7 @@ extension BoardListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
-    func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Выбран борд: \(boards[indexPath.row].title)")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.didSelectBoard(boards[indexPath.row])
     }
 }

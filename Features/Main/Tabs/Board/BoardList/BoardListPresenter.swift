@@ -2,6 +2,7 @@ import UIKit
 
 protocol BoardListPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func viewWillDisappear()
     func didTapCreateButton()
     func didTapDeleteButton()
     func didSelectBoard(_ board: Board)
@@ -22,6 +23,10 @@ final class BoardListPresenter: BoardListPresenterProtocol, BoardListInteractorO
     
     func viewDidLoad() {
         interactor.fetchBoards()
+    }
+    
+    func viewWillDisappear() {
+        interactor.stopListening()
     }
     
     func didTapCreateButton() {

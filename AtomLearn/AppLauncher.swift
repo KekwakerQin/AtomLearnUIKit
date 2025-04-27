@@ -6,7 +6,7 @@ final class AppLauncher {
 
     private init() {}
 
-    var authService: AuthServiceProtocol = FirebaseAuthService() // ← без "any"
+    var authService: AuthServiceProtocol = FirebaseAuthService() // без any
 
     func launch(in window: UIWindow) {
         let state = determineAppState()
@@ -16,6 +16,9 @@ final class AppLauncher {
             window.rootViewController = AuthRouter.createModule()
         case .authorized(let userID):
             window.rootViewController = MainRouter.createTabBar(for: userID)
+            DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 1) {
+                CardPreloadManager.shared.startBackgroundPreload(for: userID)
+            }
         }
 
         window.makeKeyAndVisible()

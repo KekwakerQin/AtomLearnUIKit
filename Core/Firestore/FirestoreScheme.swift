@@ -12,7 +12,7 @@ enum FirestoreFields {
         static let uid = "uid"
         static let username = "username"
         static let photoURL = "photoURL"
-        static let registeredAt = "registeredAt"
+        static let registeredAt = "registeredAt" 
         static let coins = "coins"
     }
     

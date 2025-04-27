@@ -29,11 +29,26 @@ final class BoardDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Loaded")
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        presenter.viewDidLoad()
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CardCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         setupHierarchy()
         setupLayot()
         setupAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.viewWillDisappear()
     }
     
     private func setupAction() {
@@ -48,6 +63,8 @@ final class BoardDetailViewController: UIViewController {
     }
     
     private func setupLayot() {
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -111,14 +128,19 @@ extension BoardDetailViewController: BoardDetailViewProtocol {
 
 // MARK: - BoardDetailView: TableViewDataSource
 
-extension BoardDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension BoardDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tv: UITableView, numberOfRowsInSection section: Int) -> Int {
         cards.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell", for: indexPath)
+    func tableView(_ tv: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tv.dequeueReusableCell(withIdentifier: "CardCell", for: indexPath)
         cell.textLabel?.text = cards[indexPath.row].term
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectCard(cards[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

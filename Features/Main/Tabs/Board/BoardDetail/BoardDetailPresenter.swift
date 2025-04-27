@@ -5,6 +5,9 @@ protocol BoardDetailPresenterProtocol {
     func didTapCreateButton()
     func didTapDeleteButton()
     func didSelectCard(_ card: Card)
+    
+    func viewWillAppear()
+    func viewWillDisappear()
 }
 
 final class BoardDetailPresenter: BoardDetailPresenterProtocol {
@@ -22,7 +25,15 @@ final class BoardDetailPresenter: BoardDetailPresenterProtocol {
     
     func viewDidLoad() {
         view?.displayBoardInfo(title: board.title, description: board.description)
-        interactor.fetchCards()
+    }
+    
+    func viewWillAppear() {
+        interactor.viewWillAppear()
+    }
+
+    func viewWillDisappear() {
+        CardPreloadManager.shared.defocus()
+        interactor.viewWillDisappear()
     }
     
     func didSelectCard(_ card: Card) {
@@ -31,7 +42,7 @@ final class BoardDetailPresenter: BoardDetailPresenterProtocol {
     }
     
     func didTapCreateButton() {
-        interactor.createCard()
+        interactor.addCard()
     }
     
     func didTapDeleteButton() {

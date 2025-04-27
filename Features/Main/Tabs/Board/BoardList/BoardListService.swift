@@ -7,6 +7,7 @@ protocol BoardServiceProtocol {
     func fetchBoards(for uid: String) -> Single<[Board]>
     func createBoard(for uid: String) -> Single<Board>
     func deleteBoards(for uid: String) -> Single<Void>
+    func listenBoards(for uid: String, listener: @escaping (Result<[Board], Error>) -> Void) -> ListenerRegistration
 }
 
 final class BoardService: BoardServiceProtocol {
@@ -32,6 +33,35 @@ final class BoardService: BoardServiceProtocol {
         }
     }
     
+    func listenBoards(for uid: String, listener: @escaping (Result<[Board], Error>) -> Void) -> ListenerRegistration {
+        return FirestorePaths.boardsCollection()
+            .whereField(FirestoreFields.Board.ownerUID, isEqualTo: uid)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    listener(.failure(error))
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    listener(.success([]))
+                    return
+                }
+                
+                do {
+                    let boards = try documents.map { try $0.data(as: Board.self) }
+                    listener(.success(boards))
+                } catch {
+                    listener(.failure(error))
+                }
+            }
+    }
+    
+    // Заглушка
+    func generateRandomBoardTitleWithNumber() -> String {
+        let number = Int.random(in: 1...100)
+        return "Board #\(number)"
+    }
+    
     func createBoard(for uid: String) -> Single<Board> {
         Single.create { single in
             let boardID = UUID().uuidString
@@ -39,7 +69,7 @@ final class BoardService: BoardServiceProtocol {
                 boardID: boardID,
                 ownerUID: uid,
                 profilePictures: [],
-                title: "New board",
+                title: self.generateRandomBoardTitleWithNumber(),
                 description: "Desription",
                 createdAt: Date()
             )
