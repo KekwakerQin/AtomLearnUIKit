@@ -63,6 +63,7 @@
 		7D1B67792DA4C5D000C9764D /* AtomLearnUIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomLearnUIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4F3E512DACAD5B00B35A20 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		7D6E85CF2DB5DBBC007A2BFE /* Pasajero.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pasajero.otf; sourceTree = "<group>"; };
+		7DA8957A2DBF1A4200FA6D88 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		7DB0F0C32DA518B500F91601 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DB0F0CA2DA518B500F91601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB0F16A2DA7F19400F91601 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -258,16 +259,8 @@
 		7D1B674D2DA4C5CF00C9764D = {
 			isa = PBXGroup;
 			children = (
-				7D0397AA2DB86A7F00849CF1 /* Shared */,
-				7DB46F392DB763560040DE1C /* UIComponents */,
-				7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */,
-				7DB0F0E42DA7B0AF00F91601 /* Common */,
-				7D6E85E32DB63286007A2BFE /* Sources */,
+				7DDEE61F2DBF20A900F33839 /* IOS */,
 				7DB0F0E32DA7B0A700F91601 /* Resources */,
-				7DB0F0E22DA7B09D00F91601 /* Features */,
-				7DB0F0E12DA7B09700F91601 /* Core */,
-				7D1B67582DA4C5CF00C9764D /* AtomLearn */,
-				7DA1C2F52DAE2B0E0064C741 /* Frameworks */,
 				7D1B67572DA4C5CF00C9764D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -305,6 +298,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DA895782DBF1A2A00FA6D88 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				7DA895792DBF1A3A00FA6D88 /* UIKitPreview */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		7DA895792DBF1A3A00FA6D88 /* UIKitPreview */ = {
+			isa = PBXGroup;
+			children = (
+				7DA8957A2DBF1A4200FA6D88 /* UIViewControllerPreview.swift */,
+			);
+			path = UIKitPreview;
 			sourceTree = "<group>";
 		};
 		7DB0F0E12DA7B09700F91601 /* Core */ = {
@@ -352,6 +361,23 @@
 				7DB46F3A2DB763680040DE1C /* UIButtonExtensions.swift */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		7DDEE61F2DBF20A900F33839 /* IOS */ = {
+			isa = PBXGroup;
+			children = (
+				7DA895782DBF1A2A00FA6D88 /* Support */,
+				7D0397AA2DB86A7F00849CF1 /* Shared */,
+				7DB46F392DB763560040DE1C /* UIComponents */,
+				7DB0F0E72DA7B2C200F91601 /* AtomLearnXCTests */,
+				7DB0F0E42DA7B0AF00F91601 /* Common */,
+				7D6E85E32DB63286007A2BFE /* Sources */,
+				7DB0F0E22DA7B09D00F91601 /* Features */,
+				7DB0F0E12DA7B09700F91601 /* Core */,
+				7D1B67582DA4C5CF00C9764D /* AtomLearn */,
+				7DA1C2F52DAE2B0E0064C741 /* Frameworks */,
+			);
+			path = IOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
