@@ -606,7 +606,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FM5UA69R37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/AtomLearn/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IOS/AtomLearn/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -633,7 +633,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FM5UA69R37;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/AtomLearn/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IOS/AtomLearn/Info.plist";
 				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/AtomLearn/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
